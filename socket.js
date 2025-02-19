@@ -14,13 +14,11 @@ function initSocket(server) {
   io.on("connection", (socket) => {
     console.log(`⚡ User connected: ${socket.id}`);
 
-    // Register user ID to socket ID
     socket.on("register", (userId) => {
       onlineUsers.set(userId, socket.id);
       console.log(`✅ User registered: ${userId} -> ${socket.id}`);
     });
 
-    // Remove user from the map when disconnected
     socket.on("disconnect", () => {
       for (let [key, value] of onlineUsers.entries()) {
         if (value === socket.id) {
@@ -35,7 +33,6 @@ function initSocket(server) {
   return io;
 }
 
-// Function to send a notification
 function sendNotification(userId, message) {
   if (!io) {
     console.error("❌ Socket.io is not initialized");

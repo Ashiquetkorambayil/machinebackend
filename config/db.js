@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-require('dotenv').config(); // Load .env variables
+require('dotenv').config();
 
 const connectDB = async () => {
     try {
@@ -7,7 +7,7 @@ const connectDB = async () => {
         console.log('MongoDB Connected');
     } catch (error) {
         console.error(error.message);
-        process.exit(1); // Exit process with failure
+        process.exit(1); 
     }
 };
 
